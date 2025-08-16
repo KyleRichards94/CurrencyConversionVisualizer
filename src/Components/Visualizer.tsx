@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import { useEffect, useState } from "react";
+import FiatList from "../Tickers/FiatTickers";
 
 
 function Bar({ x, y, height, label }: BarData) {
@@ -31,10 +32,22 @@ function Visualizer(props: { currencyConversionRates: CurrencyConversion | undef
         if (props.currencyConversionRates) {
             const [firstBase] = Object.keys(props.currencyConversionRates).filter(k => k !== "date");
             const rates = props.currencyConversionRates[firstBase] as CurrencyRates;
-            const pairs = Object.entries(rates).map(([tickerName, value]) => ({
-                tickerName,
-                value,
-            }))
+
+            const fiatKeys = Object.keys(FiatList());
+
+            const pairs = Object.entries(rates)
+                .filter(([tickerName]) => fiatKeys.includes(tickerName))
+                .map(([tickerName, value]) => ({
+                    tickerName,
+                    value,
+                }));
+
+            const cryptoPairs = Object.entries(rates)
+                .filter(([tickerName]) => !fiatKeys.includes(tickerName))
+                .map(([tickerName, value]) => ({
+                    tickerName,
+                    value,
+                }));
 
             const n = Math.ceil(Math.sqrt(pairs.length));
 

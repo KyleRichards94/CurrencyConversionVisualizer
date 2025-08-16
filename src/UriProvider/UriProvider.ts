@@ -7,4 +7,7 @@ export const UriProvider = {
     getCurrencyConversion(ticker: string): string {
         return `${baseCurrencyConversionApiUrl}/${ticker}.json`
     },
+    getCurrencyInfomation(ticker: string): string {
+        return `https://restcountries.com/v3.1/currency/${ticker}`
+    }
 };

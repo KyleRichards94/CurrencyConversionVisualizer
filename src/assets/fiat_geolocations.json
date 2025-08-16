@@ -1,0 +1,992 @@
+[
+    {
+        "ticker": "aed",
+        "lat": 24.47,
+        "long": 54.37
+    },
+    {
+        "ticker": "afn",
+        "lat": 34.52,
+        "long": 69.18
+    },
+    {
+        "ticker": "all",
+        "lat": 41.32,
+        "long": 19.82
+    },
+    {
+        "ticker": "amd",
+        "lat": 40.17,
+        "long": 44.5
+    },
+    {
+        "ticker": "ang",
+        "lat": -26.32,
+        "long": 31.13
+    },
+    {
+        "ticker": "aoa",
+        "lat": -8.83,
+        "long": 13.22
+    },
+    {
+        "ticker": "ars",
+        "lat": -34.58,
+        "long": -58.67
+    },
+    {
+        "ticker": "aud",
+        "lat": -12.17,
+        "long": 96.83
+    },
+    {
+        "ticker": "awg",
+        "lat": 12.52,
+        "long": -70.03
+    },
+    {
+        "ticker": "azn",
+        "lat": 40.38,
+        "long": 49.87
+    },
+    {
+        "ticker": "bam",
+        "lat": 43.87,
+        "long": 18.42
+    },
+    {
+        "ticker": "bbd",
+        "lat": 13.1,
+        "long": -59.62
+    },
+    {
+        "ticker": "bdt",
+        "lat": 23.72,
+        "long": 90.4
+    },
+    {
+        "ticker": "bgn",
+        "lat": 42.68,
+        "long": 23.32
+    },
+    {
+        "ticker": "bhd",
+        "lat": 26.23,
+        "long": 50.57
+    },
+    {
+        "ticker": "bif",
+        "lat": -3.43,
+        "long": 29.93
+    },
+    {
+        "ticker": "bmd",
+        "lat": 32.28,
+        "long": -64.78
+    },
+    {
+        "ticker": "bnd",
+        "lat": 4.88,
+        "long": 114.93
+    },
+    {
+        "ticker": "bob",
+        "lat": -19.02,
+        "long": -65.26
+    },
+    {
+        "ticker": "brl",
+        "lat": -15.79,
+        "long": -47.88
+    },
+    {
+        "ticker": "bsd",
+        "lat": 25.08,
+        "long": -77.35
+    },
+    {
+        "ticker": "btn",
+        "lat": 27.47,
+        "long": 89.63
+    },
+    {
+        "ticker": "bwp",
+        "lat": -24.63,
+        "long": 25.9
+    },
+    {
+        "ticker": "byn",
+        "lat": 53.9,
+        "long": 27.57
+    },
+    {
+        "ticker": "bzd",
+        "lat": 17.25,
+        "long": -88.77
+    },
+    {
+        "ticker": "cad",
+        "lat": 45.42,
+        "long": -75.7
+    },
+    {
+        "ticker": "cdf",
+        "lat": -4.32,
+        "long": 15.3
+    },
+    {
+        "ticker": "chf",
+        "lat": 46.92,
+        "long": 7.47
+    },
+    {
+        "ticker": "clp",
+        "lat": -33.45,
+        "long": -70.67
+    },
+    {
+        "ticker": "cny",
+        "lat": 39.92,
+        "long": 116.38
+    },
+    {
+        "ticker": "cop",
+        "lat": 4.71,
+        "long": -74.07
+    },
+    {
+        "ticker": "crc",
+        "lat": 9.93,
+        "long": -84.09
+    },
+    {
+        "ticker": "cuc",
+        "lat": 23.12,
+        "long": -82.35
+    },
+    {
+        "ticker": "cup",
+        "lat": 23.12,
+        "long": -82.35
+    },
+    {
+        "ticker": "cve",
+        "lat": 14.92,
+        "long": -23.52
+    },
+    {
+        "ticker": "czk",
+        "lat": 50.08,
+        "long": 14.47
+    },
+    {
+        "ticker": "djf",
+        "lat": 11.58,
+        "long": 43.15
+    },
+    {
+        "ticker": "dkk",
+        "lat": 62.01,
+        "long": -6.77
+    },
+    {
+        "ticker": "dop",
+        "lat": 18.47,
+        "long": -69.9
+    },
+    {
+        "ticker": "dzd",
+        "lat": 36.75,
+        "long": 3.05
+    },
+    {
+        "ticker": "egp",
+        "lat": 31.9,
+        "long": 35.2
+    },
+    {
+        "ticker": "ern",
+        "lat": 17.3,
+        "long": -62.72
+    },
+    {
+        "ticker": "etb",
+        "lat": 9.03,
+        "long": 38.7
+    },
+    {
+        "ticker": "eur",
+        "lat": 60.12,
+        "long": 19.9
+    },
+    {
+        "ticker": "fjd",
+        "lat": -18.13,
+        "long": 178.42
+    },
+    {
+        "ticker": "fkp",
+        "lat": -51.7,
+        "long": -57.85
+    },
+    {
+        "ticker": "gbp",
+        "lat": -54.28,
+        "long": -36.5
+    },
+    {
+        "ticker": "gel",
+        "lat": 41.68,
+        "long": 44.83
+    },
+    {
+        "ticker": "ggp",
+        "lat": 49.45,
+        "long": -2.54
+    },
+    {
+        "ticker": "ghs",
+        "lat": 5.55,
+        "long": -0.22
+    },
+    {
+        "ticker": "gip",
+        "lat": 36.13,
+        "long": -5.35
+    },
+    {
+        "ticker": "gmd",
+        "lat": 13.45,
+        "long": -16.57
+    },
+    {
+        "ticker": "gnf",
+        "lat": 9.5,
+        "long": -13.7
+    },
+    {
+        "ticker": "gtq",
+        "lat": 14.62,
+        "long": -90.52
+    },
+    {
+        "ticker": "gyd",
+        "lat": 6.8,
+        "long": -58.15
+    },
+    {
+        "ticker": "hkd",
+        "lat": 22.267,
+        "long": 114.188
+    },
+    {
+        "ticker": "hnl",
+        "lat": 14.1,
+        "long": -87.22
+    },
+    {
+        "ticker": "htg",
+        "lat": 18.53,
+        "long": -72.33
+    },
+    {
+        "ticker": "huf",
+        "lat": 47.5,
+        "long": 19.08
+    },
+    {
+        "ticker": "idr",
+        "lat": -6.17,
+        "long": 106.82
+    },
+    {
+        "ticker": "ils",
+        "lat": 31.77,
+        "long": 35.23
+    },
+    {
+        "ticker": "imp",
+        "lat": 54.15,
+        "long": -4.48
+    },
+    {
+        "ticker": "inr",
+        "lat": 27.47,
+        "long": 89.63
+    },
+    {
+        "ticker": "iqd",
+        "lat": 33.33,
+        "long": 44.4
+    },
+    {
+        "ticker": "irr",
+        "lat": 9.03,
+        "long": 38.7
+    },
+    {
+        "ticker": "isk",
+        "lat": 64.15,
+        "long": -21.95
+    },
+    {
+        "ticker": "jep",
+        "lat": 49.18,
+        "long": -2.1
+    },
+    {
+        "ticker": "jmd",
+        "lat": 17.99702,
+        "long": -76.79358
+    },
+    {
+        "ticker": "jod",
+        "lat": 31.9,
+        "long": 35.2
+    },
+    {
+        "ticker": "jpy",
+        "lat": 35.68,
+        "long": 139.75
+    },
+    {
+        "ticker": "kes",
+        "lat": -1.28,
+        "long": 36.82
+    },
+    {
+        "ticker": "kgs",
+        "lat": 42.87,
+        "long": 74.6
+    },
+    {
+        "ticker": "khr",
+        "lat": 11.55,
+        "long": 104.92
+    },
+    {
+        "ticker": "kmf",
+        "lat": -11.7,
+        "long": 43.23
+    },
+    {
+        "ticker": "kpw",
+        "lat": 39.02,
+        "long": 125.75
+    },
+    {
+        "ticker": "krw",
+        "lat": 37.55,
+        "long": 126.98
+    },
+    {
+        "ticker": "kwd",
+        "lat": 29.37,
+        "long": 47.97
+    },
+    {
+        "ticker": "kyd",
+        "lat": 19.3,
+        "long": -81.38
+    },
+    {
+        "ticker": "kzt",
+        "lat": 51.16,
+        "long": 71.45
+    },
+    {
+        "ticker": "lak",
+        "lat": 17.97,
+        "long": 102.6
+    },
+    {
+        "ticker": "lbp",
+        "lat": 33.87,
+        "long": 35.5
+    },
+    {
+        "ticker": "lkr",
+        "lat": 6.89,
+        "long": 79.9
+    },
+    {
+        "ticker": "lrd",
+        "lat": 6.3,
+        "long": -10.8
+    },
+    {
+        "ticker": "lsl",
+        "lat": -29.32,
+        "long": 27.48
+    },
+    {
+        "ticker": "lyd",
+        "lat": 32.88,
+        "long": 13.17
+    },
+    {
+        "ticker": "mad",
+        "lat": -13.28,
+        "long": 27.14
+    },
+    {
+        "ticker": "mdl",
+        "lat": 47.01,
+        "long": 28.9
+    },
+    {
+        "ticker": "mga",
+        "lat": -18.92,
+        "long": 47.52
+    },
+    {
+        "ticker": "mkd",
+        "lat": 42,
+        "long": 21.43
+    },
+    {
+        "ticker": "mmk",
+        "lat": 19.76,
+        "long": 96.07
+    },
+    {
+        "ticker": "mnt",
+        "lat": 47.92,
+        "long": 106.91
+    },
+    {
+        "ticker": "mru",
+        "lat": 18.07,
+        "long": -15.97
+    },
+    {
+        "ticker": "mur",
+        "lat": -20.15,
+        "long": 57.48
+    },
+    {
+        "ticker": "mvr",
+        "lat": 4.17,
+        "long": 73.51
+    },
+    {
+        "ticker": "mwk",
+        "lat": -13.97,
+        "long": 33.78
+    },
+    {
+        "ticker": "mxn",
+        "lat": 19.43,
+        "long": -99.13
+    },
+    {
+        "ticker": "myr",
+        "lat": 3.17,
+        "long": 101.7
+    },
+    {
+        "ticker": "mzn",
+        "lat": -25.95,
+        "long": 32.58
+    },
+    {
+        "ticker": "nad",
+        "lat": 45.42,
+        "long": -75.7
+    },
+    {
+        "ticker": "ngn",
+        "lat": 9.08,
+        "long": 7.53
+    },
+    {
+        "ticker": "nio",
+        "lat": 12.13,
+        "long": -86.25
+    },
+    {
+        "ticker": "nok",
+        "lat": 78.22,
+        "long": 15.63
+    },
+    {
+        "ticker": "npr",
+        "lat": 27.72,
+        "long": 85.32
+    },
+    {
+        "ticker": "nzd",
+        "lat": -41.3,
+        "long": 174.78
+    },
+    {
+        "ticker": "omr",
+        "lat": 23.62,
+        "long": 58.58
+    },
+    {
+        "ticker": "pab",
+        "lat": 8.97,
+        "long": -79.53
+    },
+    {
+        "ticker": "pen",
+        "lat": -12.05,
+        "long": -77.05
+    },
+    {
+        "ticker": "pgk",
+        "lat": -9.45,
+        "long": 147.18
+    },
+    {
+        "ticker": "php",
+        "lat": 14.6,
+        "long": 120.97
+    },
+    {
+        "ticker": "pkr",
+        "lat": 33.68,
+        "long": 73.05
+    },
+    {
+        "ticker": "pln",
+        "lat": 52.25,
+        "long": 21
+    },
+    {
+        "ticker": "pyg",
+        "lat": -25.28,
+        "long": -57.57
+    },
+    {
+        "ticker": "qar",
+        "lat": 25.28,
+        "long": 51.53
+    },
+    {
+        "ticker": "ron",
+        "lat": 62.01,
+        "long": -6.77
+    },
+    {
+        "ticker": "rsd",
+        "lat": 44.83,
+        "long": 20.5
+    },
+    {
+        "ticker": "rub",
+        "lat": 53.9,
+        "long": 27.57
+    },
+    {
+        "ticker": "rwf",
+        "lat": -1.95,
+        "long": 30.05
+    },
+    {
+        "ticker": "sar",
+        "lat": 24.65,
+        "long": 46.7
+    },
+    {
+        "ticker": "sbd",
+        "lat": -9.43,
+        "long": 159.95
+    },
+    {
+        "ticker": "scr",
+        "lat": -4.62,
+        "long": 55.45
+    },
+    {
+        "ticker": "sdg",
+        "lat": 15.6,
+        "long": 32.53
+    },
+    {
+        "ticker": "sek",
+        "lat": 59.33,
+        "long": 18.05
+    },
+    {
+        "ticker": "sgd",
+        "lat": 4.88,
+        "long": 114.93
+    },
+    {
+        "ticker": "shp",
+        "lat": -15.93,
+        "long": -5.72
+    },
+    {
+        "ticker": "sle",
+        "lat": 8.48,
+        "long": -13.23
+    },
+    {
+        "ticker": "sos",
+        "lat": 2.07,
+        "long": 45.33
+    },
+    {
+        "ticker": "srd",
+        "lat": 5.83,
+        "long": -55.17
+    },
+    {
+        "ticker": "stn",
+        "lat": 0.34,
+        "long": 6.73
+    },
+    {
+        "ticker": "syp",
+        "lat": 33.5,
+        "long": 36.3
+    },
+    {
+        "ticker": "szl",
+        "lat": -26.32,
+        "long": 31.13
+    },
+    {
+        "ticker": "thb",
+        "lat": 13.75,
+        "long": 100.52
+    },
+    {
+        "ticker": "tjs",
+        "lat": 38.55,
+        "long": 68.77
+    },
+    {
+        "ticker": "tmt",
+        "lat": 37.95,
+        "long": 58.38
+    },
+    {
+        "ticker": "tnd",
+        "lat": 36.8,
+        "long": 10.18
+    },
+    {
+        "ticker": "top",
+        "lat": -21.13,
+        "long": -175.2
+    },
+    {
+        "ticker": "try",
+        "lat": 39.93,
+        "long": 32.87
+    },
+    {
+        "ticker": "ttd",
+        "lat": 10.65,
+        "long": -61.52
+    },
+    {
+        "ticker": "tvd",
+        "lat": -8.52,
+        "long": 179.22
+    },
+    {
+        "ticker": "twd",
+        "lat": 25.03,
+        "long": 121.52
+    },
+    {
+        "ticker": "tzs",
+        "lat": -6.16,
+        "long": 35.75
+    },
+    {
+        "ticker": "uah",
+        "lat": 50.43,
+        "long": 30.52
+    },
+    {
+        "ticker": "ugx",
+        "lat": 0.32,
+        "long": 32.55
+    },
+    {
+        "ticker": "usd",
+        "lat": 11.55,
+        "long": 104.92
+    },
+    {
+        "ticker": "uyu",
+        "lat": -34.85,
+        "long": -56.17
+    },
+    {
+        "ticker": "uzs",
+        "lat": 41.32,
+        "long": 69.25
+    },
+    {
+        "ticker": "val",
+        "lat": -8.52,
+        "long": 179.22
+    },
+    {
+        "ticker": "ves",
+        "lat": 10.48,
+        "long": -66.87
+    },
+    {
+        "ticker": "vnd",
+        "lat": 21.03,
+        "long": 105.85
+    },
+    {
+        "ticker": "vuv",
+        "lat": -17.73,
+        "long": 168.32
+    },
+    {
+        "ticker": "wst",
+        "lat": -13.82,
+        "long": -171.77
+    },
+    {
+        "ticker": "xaf",
+        "lat": -4.25,
+        "long": 15.28
+    },
+    {
+        "ticker": "xcd",
+        "lat": 17.3,
+        "long": -62.72
+    },
+    {
+        "ticker": "xof",
+        "lat": 14.73,
+        "long": -17.63
+    },
+    {
+        "ticker": "xpf",
+        "lat": -17.53,
+        "long": -149.56
+    },
+    {
+        "ticker": "yer",
+        "lat": 15.37,
+        "long": 44.19
+    },
+    {
+        "ticker": "zar",
+        "lat": -25.7,
+        "long": 28.22
+    },
+    {
+        "ticker": "zmw",
+        "lat": -15.42,
+        "long": 28.28
+    },
+    {
+        "ticker": "zwl",
+        "lat": -17.82,
+        "long": 31.03
+    },
+    {
+        "ticker": "eek",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "frf",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "grd",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "itl",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "mro",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "dem",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "fim",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "ltl",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "ats",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "cyp",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "mzm",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "pte",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "ghc",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "std",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "zmk",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "spl",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "azm",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "veb",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "rol",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "lvl",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "sit",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "nlg",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "xdr",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "iep",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "byr",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "luf",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "mgf",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "skk",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "hrk",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "esp",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "cnh",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "sll",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "bef",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "zwd",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "tmm",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "srg",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "sdd",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "svc",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "mtl",
+        "lat": 0,
+        "long": 0
+    },
+    {
+        "ticker": "vef",
+        "lat": 0,
+        "long": 0
+    }
+]
