@@ -1,33 +1,29 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import TickersSelectList from './Components/TickersSelectList.tsx'
+import Visualizer from './Components/Visualizer.tsx'
+import { UriProvider } from './UriProvider/UriProvider.ts'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedTicker, setSelectedTicker] = useState<Ticker>()
+  const [currencyConversionRates, setCurrencyConversionRates] = useState<CurrencyConversion>()
+
+  function onTickerSelected(ticker: Ticker) {
+    fetch(UriProvider.getCurrencyConversion(ticker.tickerName))
+      .then(response => response.json())
+      .then(data => setCurrencyConversionRates(data))
+
+    setSelectedTicker(ticker);
+  }
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h3>Select a currency</h3>
+        <TickersSelectList onChange={onTickerSelected} />
+        <pre>{JSON.stringify(selectedTicker)}</pre>
+        <Visualizer currencyConversionRates={currencyConversionRates} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
