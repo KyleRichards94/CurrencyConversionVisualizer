@@ -38,7 +38,7 @@ export default function Bar({ lat, long, height, label, sphereRadius, cameraRef 
     return (
         <group position={[surface.x, surface.y, surface.z]} quaternion={quat}>
             <mesh position={[0, height / 2, 0]}>
-                <boxGeometry args={[0.1, height, 0.1]} />
+                <boxGeometry args={[0.03, height, 0.03]} />
                 <meshStandardMaterial color="green" />
             </mesh>
 

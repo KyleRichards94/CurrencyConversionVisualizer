@@ -1,11 +1,23 @@
-import { useThree } from "@react-three/fiber";
+import { useLoader, useThree } from "@react-three/fiber";
 import { Sphere } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import Bar from "./Bar";
+import earth from './../assets/2k_earth_daymap.jpg'
+import * as THREE from "three";
 
 export default function WorldScene({ bars, sphereRadius }: { bars: BarData[], sphereRadius: number }) {
     const { camera } = useThree();
     const cameraRef = useRef(camera);
+    // Import TextureLoader from three.js
+    const texture = useLoader(THREE.TextureLoader, earth) as THREE.Texture;
+
+    // Tweak the texture once loaded
+    texture.anisotropy = 8;
+    texture.colorSpace = THREE.SRGBColorSpace;
+    // For a globe you usually DON'T want tiling; keep repeat 1,1
+    texture.wrapS = THREE.ClampToEdgeWrapping;
+    texture.wrapT = THREE.ClampToEdgeWrapping;
+    texture.repeat.set(1, 1);
 
     useEffect(() => {
         cameraRef.current = camera;
@@ -13,17 +25,13 @@ export default function WorldScene({ bars, sphereRadius }: { bars: BarData[], sp
 
     return (
         <>
-            <ambientLight intensity={0.4} />
-            <pointLight position={[10, 10, 10]} intensity={1} />
-            <pointLight position={[-10, -10, -10]} intensity={0.5} />
+            <ambientLight intensity={5} />
 
             <Sphere args={[sphereRadius, 32, 32]} position={[0, 0, 0]}>
                 <meshStandardMaterial
-                    color="#e0e0e0"
-                    transparent
-                    opacity={0.3}
-                    wireframe={true}
+                    map={texture} metalness={2} roughness={0.1}
                 />
+                {texture && <meshPhongMaterial attach="material" map={texture} />}
             </Sphere>
 
             {bars.map((bar, i) => (
