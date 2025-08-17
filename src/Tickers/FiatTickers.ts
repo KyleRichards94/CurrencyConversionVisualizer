@@ -1,5 +1,3 @@
-import { UriProvider } from "../UriProvider/UriProvider";
-
 export default function FiatList() {
     return {
         "aed": "Emirati Dirham",

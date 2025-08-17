@@ -11,7 +11,9 @@ function TickersSelectList(props: { onChange: (selection: Ticker) => void }) {
             .then(data => {
                 const listTickers: Ticker[] = Object.entries(data).map(([tickerName, name]) => ({
                     tickerName,
-                    name: name as string
+                    name: name as string,
+                    lat: 0,
+                    long: 0,
                 }));
 
                 setTickers(listTickers)
