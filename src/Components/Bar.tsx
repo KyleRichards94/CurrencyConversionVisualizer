@@ -1,5 +1,7 @@
 
 import { Billboard, Text } from "@react-three/drei";
+import { SelectedTicker } from "./../Tickers/SelectedTicker";
+
 import * as THREE from "three";
 
 function latLongToSphere(lat: number, long: number, radius: number) {
@@ -13,6 +15,14 @@ function latLongToSphere(lat: number, long: number, radius: number) {
     return { x, y, z };
 }
 
+function getColour(ticker: string): string {
+    const appticker = SelectedTicker.getSelectedTicker();
+    if (appticker) {
+        return appticker.tickerName === ticker ? "red" : "green"
+    }
+    return "green"
+}
+
 export default function Bar({ lat, long, height, label, sphereRadius }: BarData) {
     const surface = latLongToSphere(lat, long, sphereRadius);
     const normal = new THREE.Vector3(surface.x, surface.y, surface.z).normalize();
@@ -23,7 +33,7 @@ export default function Bar({ lat, long, height, label, sphereRadius }: BarData)
         <group position={[surface.x, surface.y, surface.z]} quaternion={quat}>
             <mesh position={[0, height / 2, 0]}>
                 <boxGeometry args={[0.03, height, 0.03]} />
-                <meshStandardMaterial color="green" />
+                <meshStandardMaterial color={getColour(label)} />
             </mesh>
 
             <Billboard position={[0, height + 0.1, 0]}>

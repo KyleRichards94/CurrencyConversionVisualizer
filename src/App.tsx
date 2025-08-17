@@ -3,6 +3,7 @@ import './App.css'
 import TickersSelectList from './Components/TickersSelectList.tsx'
 import Visualizer from './Components/Visualizer.tsx'
 import { UriProvider } from './UriProvider/UriProvider.ts'
+import { SelectedTicker } from "./Tickers/SelectedTicker";
 
 function App() {
   const [currencyConversionRates, setCurrencyConversionRates] = useState<CurrencyConversion>()
@@ -11,6 +12,8 @@ function App() {
     fetch(UriProvider.getCurrencyConversion(ticker.tickerName))
       .then(response => response.json())
       .then(data => setCurrencyConversionRates(data))
+
+    SelectedTicker.setSelectedTicker(ticker);
   }
 
   return (
