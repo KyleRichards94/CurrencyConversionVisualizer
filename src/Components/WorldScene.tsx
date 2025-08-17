@@ -1,27 +1,16 @@
-import { useLoader, useThree } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
 import { Sphere } from "@react-three/drei";
-import { useEffect, useRef } from "react";
 import Bar from "./Bar";
 import earth from './../assets/2k_earth_daymap.jpg'
 import * as THREE from "three";
 
 export default function WorldScene({ bars, sphereRadius }: { bars: BarData[], sphereRadius: number }) {
-    const { camera } = useThree();
-    const cameraRef = useRef(camera);
-    // Import TextureLoader from three.js
     const texture = useLoader(THREE.TextureLoader, earth) as THREE.Texture;
-
-    // Tweak the texture once loaded
     texture.anisotropy = 8;
     texture.colorSpace = THREE.SRGBColorSpace;
-    // For a globe you usually DON'T want tiling; keep repeat 1,1
     texture.wrapS = THREE.ClampToEdgeWrapping;
     texture.wrapT = THREE.ClampToEdgeWrapping;
     texture.repeat.set(1, 1);
-
-    useEffect(() => {
-        cameraRef.current = camera;
-    }, [camera]);
 
     return (
         <>
@@ -35,7 +24,7 @@ export default function WorldScene({ bars, sphereRadius }: { bars: BarData[], sp
             </Sphere>
 
             {bars.map((bar, i) => (
-                <Bar key={i} {...bar} cameraRef={cameraRef} />
+                <Bar key={i} {...bar} />
             ))}
         </>
     );

@@ -15,7 +15,6 @@ function TickersSelectList(props: { onChange: (selection: Ticker) => void }) {
                     lat: 0,
                     long: 0,
                 }));
-
                 setTickers(listTickers)
             })
     }, [])
@@ -31,10 +30,10 @@ function TickersSelectList(props: { onChange: (selection: Ticker) => void }) {
 
     if (tickers) {
         return (
-            <div>
+            <div style={{ minWidth: "300px" }}>
                 <Select options={tickers.map((opt: Ticker) => ({ label: `${opt.name} (${opt.tickerName})`, value: opt.tickerName }))}
                     onChange={setSelection} />
-            </div>
+            </div >
         )
     }
 }
