@@ -1,32 +1,14 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Text } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import FiatList from "../Tickers/FiatTickers";
+import fiatGeolocations from '../assets/fiat_geolocations.json'
+import WorldScene from "./WorldScene";
 
-
-function Bar({ x, y, height, label }: BarData) {
-    return (
-        <group position={[x, y, height / 2]}>
-            <mesh>
-                <boxGeometry args={[0.2, 0.2, height]} />
-                <meshStandardMaterial color="orange" />
-            </mesh>
-
-            <Text
-                position={[0, 0, height / 2 + 0.3]}
-                fontSize={0.3}
-                color="black"
-                anchorX="center"
-                anchorY="bottom"
-            >
-                {label}
-            </Text>
-        </group>
-    );
-}
 
 function Visualizer(props: { currencyConversionRates: CurrencyConversion | undefined }) {
     const [bars, setBars] = useState<BarData[]>([])
+    const sphereRadius = 3;
 
     useEffect(() => {
         if (props.currencyConversionRates) {
@@ -34,6 +16,14 @@ function Visualizer(props: { currencyConversionRates: CurrencyConversion | undef
             const rates = props.currencyConversionRates[firstBase] as CurrencyRates;
 
             const fiatKeys = Object.keys(FiatList());
+            const fiatGeoLocations = fiatGeolocations
+
+            const geoIndex = new Map(
+                fiatGeoLocations.map(g => [
+                    (g.ticker ?? '').toLowerCase(),
+                    { lat: g.lat, long: g.long }
+                ])
+            );
 
             const pairs = Object.entries(rates)
                 .filter(([tickerName]) => fiatKeys.includes(tickerName))
@@ -42,57 +32,44 @@ function Visualizer(props: { currencyConversionRates: CurrencyConversion | undef
                     value,
                 }));
 
-            const cryptoPairs = Object.entries(rates)
-                .filter(([tickerName]) => !fiatKeys.includes(tickerName))
-                .map(([tickerName, value]) => ({
-                    tickerName,
-                    value,
-                }));
-
-            const n = Math.ceil(Math.sqrt(pairs.length));
-
-            const _bars: BarData[] = pairs.map((pair, i) => {
-                const x = i % n;
-                const y = Math.floor(i / n);
-                if (pair.value < 10) {
-
-                    return {
-                        x,
-                        y,
-                        height: pair.value,
-                        label: pair.tickerName,
-                    };
-                } else {
-
-                    return {
-                        x,
-                        y,
-                        height: pair.value / 10000,
-                        label: pair.tickerName,
-                    }
-                }
+            const geoPairs = pairs.map(p => {
+                const hit = geoIndex.get(p.tickerName.toLowerCase());
+                return {
+                    tickerName: p.tickerName,
+                    value: p.value,
+                    lat: hit?.lat ?? NaN,
+                    long: hit?.long ?? NaN,
+                };
             });
 
-            setBars(_bars);
+            const bars: BarData[] = geoPairs
+                .filter(p => Number.isFinite(p.lat) && Number.isFinite(p.long))
+                .map(p => ({
+                    lat: p.lat,
+                    long: p.long,
+                    height: Math.max(0.05, Math.log10(p.value + 1) * 0.6),
+                    label: p.tickerName,
+                    sphereRadius
+                }));
+
+
+            setBars(bars);
         }
 
     }, [props.currencyConversionRates])
 
     return (
-        <div style={{ width: "500px", height: "500px" }}>
-            <Canvas camera={{ position: [6, 6, 6] }}>
-                <ambientLight />
-                <pointLight position={[10, 10, 10]} />
+        <div style={{ width: "1000px", height: "1000px" }}>
+            <Canvas camera={{ position: [8, 8, 8], fov: 60 }}>
+                <WorldScene bars={bars} sphereRadius={sphereRadius} />
 
-                <mesh rotation={[0, 0, 0]}>
-                    <meshStandardMaterial color="#e0e0e0" />
-                </mesh>
-
-                {bars.map((bar, i) => (
-                    <Bar key={i} {...bar} />
-                ))}
-
-                <OrbitControls />
+                <OrbitControls
+                    enablePan={true}
+                    enableZoom={true}
+                    enableRotate={true}
+                    minDistance={sphereRadius + 2}
+                    maxDistance={20}
+                />
             </Canvas>
         </div>
     );

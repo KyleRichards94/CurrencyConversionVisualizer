@@ -10,9 +10,10 @@ declare global {
     };
 
     type BarData = {
-        x: number;
-        y: number;
+        lat: number;
+        long: number;
         height: number;
         label: string;
+        sphereRadius: number;
     };
 }
