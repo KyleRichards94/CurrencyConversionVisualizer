@@ -1,9 +1,9 @@
 // AppState.ts
 
-class AppState {
-    private static _instance: AppState;
+class SelectedTickerAppState {
+    private static _instance: SelectedTickerAppState;
     static get instance() {
-        return (this._instance ??= new AppState());
+        return (this._instance ??= new SelectedTickerAppState());
     }
     private constructor() { }
 
@@ -20,4 +20,4 @@ class AppState {
     getSelectedTicker() { return this.selectedTicker; }
 }
 
-export const SelectedTicker = AppState.instance;
+export const SelectedTicker = SelectedTickerAppState.instance;
