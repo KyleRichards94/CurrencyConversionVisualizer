@@ -28,46 +28,51 @@ function App() {
       SelectedTicker.setSelectedConversionTicker(ticker);
       setConversionFactor(_conversionFactor?.[1])
     }
-
   }
 
+  function tryConvert(): number {
+    if (conversionFactor && conversionAmount)
+      return conversionFactor * conversionAmount
+
+    return 0
+  }
   return (
     <>
-      <div class="row">
+      <div className="row">
 
-        <div class="col-md-3">
+        <div className="col-md-3">
           <h3>Convert</h3>
         </div>
 
-        <div class="col-md-9">
+        <div className="col-md-9">
           <TickersSelectList onChange={onTickerSelected} />
         </div>
 
       </div>
 
-      <div class="row">
+      <div className="row">
 
-        <div class="col-md-3">
+        <div className="col-md-3">
           <h3>To</h3>
         </div>
 
-        <div class="col-md-9">
+        <div className="col-md-9">
           <TickersSelectList onChange={onConversionSelected} />
         </div>
 
       </div>
 
-      <div class="row">
+      <div className="row">
 
-        <div class="col-md-3">
+        <div className="col-md-3">
           <h3>Amount</h3>
         </div>
 
-        <div class="col-md-9">
-          <div class="input-group mb-3">
+        <div className="col-md-9">
+          <div className="input-group mb-3">
             <input onChange={e => setConversionAmount(Number(e.target.value))} type="number" class="form-control" aria-label="Amount" />
-            <div class="input-group-append">
-              <span class="input-group-text">{SelectedTicker.getSelectedTicker()?.tickerName ?? "$"}</span>
+            <div className="input-group-append">
+              <span className="input-group-text">{SelectedTicker.getSelectedTicker()?.tickerName ?? "$"}</span>
             </div>
           </div>
         </div>
@@ -75,7 +80,7 @@ function App() {
       </div>
 
       <h5>Conversion Rate : {conversionFactor}</h5>
-      <h5>{(conversionFactor * conversionAmount) ? (conversionFactor * conversionAmount).toFixed(2) : 0} {SelectedTicker.getSelectedConversionTicker()?.tickerName}</h5>
+      <h5>{tryConvert().toFixed(2)} {SelectedTicker.getSelectedConversionTicker()?.tickerName}</h5>
       <hr></hr>
       <Visualizer currencyConversionRates={currencyConversionRates} />
     </>
