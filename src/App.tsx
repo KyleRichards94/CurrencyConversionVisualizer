@@ -3,7 +3,7 @@ import './App.css'
 import TickersSelectList from './Components/TickersSelectList.tsx'
 import Visualizer from './Components/Visualizer.tsx'
 import { UriProvider } from './UriProvider/UriProvider.ts'
-import { SelectedTicker } from "./Tickers/SelectedTicker";
+import { AppState } from "./Infrustructure/AppState.ts";
 import NavBar from './Components/NavBar.tsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +18,7 @@ function App() {
       .then(response => response.json())
       .then(data => setCurrencyConversionRates(data))
 
-    SelectedTicker.setSelectedTicker(ticker);
+    AppState.setSelectedTicker(ticker);
   }
 
   function onConversionSelected(ticker: Ticker) {
@@ -26,14 +26,17 @@ function App() {
       const [_base] = Object.keys(currencyConversionRates).filter(k => k !== "date");
       const _pairs = Object.entries(currencyConversionRates[_base]);
       const _conversionFactor = _pairs.find(([k]) => k === ticker.tickerName)
-      SelectedTicker.setSelectedConversionTicker(ticker);
+      AppState.setSelectedConversionTicker(ticker);
       setConversionFactor(_conversionFactor?.[1])
     }
   }
 
   function tryConvert(): number {
-    if (conversionFactor && conversionAmount)
-      return conversionFactor * conversionAmount
+    if (conversionFactor && conversionAmount) {
+      const value = conversionFactor * conversionAmount;
+      AppState.setConversionValue(value);
+      return value;
+    }
 
     return 0
   }
@@ -74,7 +77,7 @@ function App() {
           <div className="input-group mb-3">
             <input onChange={e => setConversionAmount(Number(e.target.value))} type="number" className="form-control" aria-label="Amount" />
             <div className="input-group-append">
-              <span className="input-group-text">{SelectedTicker.getSelectedTicker()?.tickerName ?? "$"}</span>
+              <span className="input-group-text">{AppState.getSelectedTicker()?.tickerName ?? "$"}</span>
             </div>
           </div>
         </div>
@@ -82,7 +85,7 @@ function App() {
       </div>
 
       <h5>Conversion Rate : {conversionFactor}</h5>
-      <h5>{tryConvert().toFixed(2)} {SelectedTicker.getSelectedConversionTicker()?.tickerName}</h5>
+      <h5>{tryConvert().toFixed(2)} {AppState.getSelectedConversionTicker()?.tickerName}</h5>
       <hr></hr>
       <Visualizer currencyConversionRates={currencyConversionRates} />
     </div>

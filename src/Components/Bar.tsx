@@ -1,12 +1,12 @@
 
 import { Billboard, Text } from "@react-three/drei";
-import { SelectedTicker } from "./../Tickers/SelectedTicker";
+import { AppState } from "../Infrustructure/AppState";
 
 import * as THREE from "three";
 
 function getColour(ticker: string): string {
-    const appticker = SelectedTicker.getSelectedTicker();
-    const appconversion = SelectedTicker.getSelectedConversionTicker();
+    const appticker = AppState.getSelectedTicker();
+    const appconversion = AppState.getSelectedConversionTicker();
     if (appticker) {
         if (appconversion) {
             return appconversion.tickerName === ticker ? "blue"
