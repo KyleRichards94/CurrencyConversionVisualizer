@@ -24,7 +24,7 @@ export default function WorldScene({ bars, sphereRadius: worldRadius }: { bars: 
             const endPositionBar = bars.find(b => b.label == AppState.getSelectedConversionTicker()?.tickerName)
             const endPoint = new THREE.Vector3(endPositionBar?.position.x, endPositionBar?.position.y, endPositionBar?.position.z);
 
-            const midPoint = CalculateGeoGraphicMidPoint(startPositionBar, endPositionBar)
+            const midPoint = CalculateGeographicMidpoint(startPositionBar, endPositionBar, worldRadius)
             const midPointVector = new THREE.Vector3(midPoint?.x, midPoint?.y, midPoint?.z);
 
             midPointVec = midPointVector;
@@ -40,31 +40,48 @@ export default function WorldScene({ bars, sphereRadius: worldRadius }: { bars: 
         return [new THREE.Vector3(0, 0, 0)]
     }
 
-    function CalculateGeoGraphicMidPoint(start: BarData | undefined, end: BarData | undefined) {
-        if (start && end) {
-            const dist = Math.sqrt(Math.pow((start.lat - end.lat), 2) + Math.pow((start.long - end.long), 2))
+    function CalculateGeographicMidpoint(
+        start: BarData | undefined,
+        end: BarData | undefined,
+        worldRadius: number,
+        riseFactor = 1.6
+    ): THREE.Vector3 | undefined {
+        if (!start || !end) return;
 
-            const midpoint_lat = (start.lat + end.lat) / 2;
-            const midpoint_lon = (start.long + end.long) / 2
-            const phi = (90 - (midpoint_lat)) * (Math.PI / 180);
-            const theta = ((midpoint_lon) + 180) * (Math.PI / 180);
-            let x = 0;
-            let y = 0;
-            let z = 0;
+        const startPhi = (90 - start.lat) * Math.PI / 180;
+        const startTheta = (start.long + 180) * Math.PI / 180;
+        const endPhi = (90 - end.lat) * Math.PI / 180;
+        const endTheta = (end.long + 180) * Math.PI / 180;
 
-            if ((dist) < 180) {
-                x = -((worldRadius * 1.6) * Math.sin(phi) * Math.cos(theta));
-                y = worldRadius * 1.6 * Math.cos(phi);
-                z = worldRadius * 1.6 * Math.sin(phi) * Math.sin(theta);
+        const startVector = new THREE.Vector3(
+            -(Math.sin(startPhi) * Math.cos(startTheta)),
+            (Math.cos(startPhi)),
+            (Math.sin(startPhi) * Math.sin(startTheta))
+        ).normalize();
+
+        const endVector = new THREE.Vector3(
+            -(Math.sin(endPhi) * Math.cos(endTheta)),
+            (Math.cos(endPhi)),
+            (Math.sin(endPhi) * Math.sin(endTheta))
+        ).normalize();
+
+        const summedDirection = new THREE.Vector3().addVectors(startVector, endVector);
+        let midpointDirection: THREE.Vector3;
+        if (summedDirection.lengthSq() < 1e-16) {
+            const fallbackAxis = new THREE.Vector3(0, 1, 0);
+            const greatCircleNormal = new THREE.Vector3().copy(startVector).cross(fallbackAxis);
+
+            if (greatCircleNormal.lengthSq() < 1e-12) {
+                greatCircleNormal.copy(startVector).cross(new THREE.Vector3(1, 0, 0));
             }
-            else {
-                x = -((worldRadius * 1.6) * Math.sin(phi) * Math.cos(theta));
-                y = -worldRadius * 1.6 * Math.cos(phi);
-                z = -worldRadius * 1.6 * Math.sin(phi) * Math.sin(theta);
-            }
 
-            return { x, y, z };
+            midpointDirection = new THREE.Vector3().copy(greatCircleNormal).cross(startVector).normalize();
+        } else {
+            midpointDirection = summedDirection.normalize();
         }
+
+        const finalRadius = worldRadius * riseFactor;
+        return midpointDirection.multiplyScalar(finalRadius);
     }
 
     return (
