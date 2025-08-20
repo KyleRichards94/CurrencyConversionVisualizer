@@ -4,6 +4,7 @@ import TickersSelectList from './Components/TickersSelectList.tsx'
 import Visualizer from './Components/Visualizer.tsx'
 import { UriProvider } from './UriProvider/UriProvider.ts'
 import { SelectedTicker } from "./Tickers/SelectedTicker";
+import NavBar from './Components/NavBar.tsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -37,7 +38,8 @@ function App() {
     return 0
   }
   return (
-    <>
+    <div className="container justify-content-center align-items-center ">
+      <NavBar />
       <div className="row">
 
         <div className="col-md-3">
@@ -83,7 +85,7 @@ function App() {
       <h5>{tryConvert().toFixed(2)} {SelectedTicker.getSelectedConversionTicker()?.tickerName}</h5>
       <hr></hr>
       <Visualizer currencyConversionRates={currencyConversionRates} />
-    </>
+    </div>
   )
 }
 
