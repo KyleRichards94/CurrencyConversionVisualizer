@@ -4,17 +4,6 @@ import { SelectedTicker } from "./../Tickers/SelectedTicker";
 
 import * as THREE from "three";
 
-function latLongToSphere(lat: number, long: number, radius: number) {
-    const phi = (90 - lat) * (Math.PI / 180);
-    const theta = (long + 180) * (Math.PI / 180);
-
-    const x = -(radius * Math.sin(phi) * Math.cos(theta));
-    const y = radius * Math.cos(phi);
-    const z = radius * Math.sin(phi) * Math.sin(theta);
-
-    return { x, y, z };
-}
-
 function getColour(ticker: string): string {
     const appticker = SelectedTicker.getSelectedTicker();
     const appconversion = SelectedTicker.getSelectedConversionTicker();
@@ -28,14 +17,14 @@ function getColour(ticker: string): string {
     return "green"
 }
 
-export default function Bar({ lat, long, height, label, sphereRadius }: BarData) {
-    const surface = latLongToSphere(lat, long, sphereRadius);
-    const normal = new THREE.Vector3(surface.x, surface.y, surface.z).normalize();
+export default function Bar({ height, label, position }: BarData) {
+
+    const normal = new THREE.Vector3(position.x, position.y, position.z).normalize();
     const quat = new THREE.Quaternion()
         .setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
 
     return (
-        <group position={[surface.x, surface.y, surface.z]} quaternion={quat}>
+        <group position={[position.x, position.y, position.z]} quaternion={quat}>
             <mesh position={[0, height / 2, 0]}>
                 <boxGeometry args={[0.03, height, 0.03]} />
                 <meshStandardMaterial color={getColour(label)} />

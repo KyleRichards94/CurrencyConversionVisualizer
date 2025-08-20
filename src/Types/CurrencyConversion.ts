@@ -15,5 +15,10 @@ declare global {
         height: number;
         label: string;
         sphereRadius: number;
+        position: {
+            x: number;
+            y: number;
+            z: number;
+        }
     };
 }

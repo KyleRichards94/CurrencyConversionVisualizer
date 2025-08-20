@@ -1,4 +1,4 @@
-import { Canvas } from "@react-three/fiber";
+import { Canvas, type Vector3 } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import FiatList from "../Tickers/FiatTickers";
@@ -9,6 +9,17 @@ import WorldScene from "./WorldScene";
 function Visualizer(props: { currencyConversionRates: CurrencyConversion | undefined }) {
     const [bars, setBars] = useState<BarData[]>([])
     const sphereRadius = 3;
+
+    function latLongToSphere(lat: number, long: number) {
+        const phi = (90 - lat) * (Math.PI / 180);
+        const theta = (long + 180) * (Math.PI / 180);
+
+        const x = -(sphereRadius * Math.sin(phi) * Math.cos(theta));
+        const y = sphereRadius * Math.cos(phi);
+        const z = sphereRadius * Math.sin(phi) * Math.sin(theta);
+
+        return { x, y, z };
+    }
 
     useEffect(() => {
         if (props.currencyConversionRates) {
@@ -49,7 +60,8 @@ function Visualizer(props: { currencyConversionRates: CurrencyConversion | undef
                     long: p.long,
                     height: Math.max(0.05, Math.log10(p.value + 1) * 0.6),
                     label: p.tickerName,
-                    sphereRadius
+                    sphereRadius,
+                    position: latLongToSphere(p.lat, p.long)
                 }));
 
 

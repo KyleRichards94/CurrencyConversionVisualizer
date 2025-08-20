@@ -26,6 +26,7 @@ export default function WorldScene({ bars, sphereRadius }: { bars: BarData[], sp
             {bars.map((bar, i) => (
                 <Bar key={i} {...bar} />
             ))}
+
         </>
     );
 }
