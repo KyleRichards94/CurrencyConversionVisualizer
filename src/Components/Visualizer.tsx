@@ -8,48 +8,43 @@ import WorldScene from "./WorldScene";
 
 function Visualizer(props: { currencyConversionRates: CurrencyConversion | undefined }) {
     const [bars, setBars] = useState<BarData[]>([])
-    const sphereRadius = 3;
+    const worldRadius = 3;
 
     function latLongToSphere(lat: number, long: number) {
         const phi = (90 - lat) * (Math.PI / 180);
         const theta = (long + 180) * (Math.PI / 180);
 
-        const x = -(sphereRadius * Math.sin(phi) * Math.cos(theta));
-        const y = sphereRadius * Math.cos(phi);
-        const z = sphereRadius * Math.sin(phi) * Math.sin(theta);
+        const x = -(worldRadius * Math.sin(phi) * Math.cos(theta));
+        const y = worldRadius * Math.cos(phi);
+        const z = worldRadius * Math.sin(phi) * Math.sin(theta);
 
         return { x, y, z };
     }
 
     useEffect(() => {
         if (props.currencyConversionRates) {
-            const [firstBase] = Object.keys(props.currencyConversionRates).filter(k => k !== "date");
-            const rates = props.currencyConversionRates[firstBase] as CurrencyRates;
-
-            const fiatKeys = Object.keys(FiatList());
-            const fiatGeoLocations = fiatGeolocations
-
+            const [conversionRatesBase] = Object.keys(props.currencyConversionRates).filter(k => k !== "date");
             const geoIndex = new Map(
-                fiatGeoLocations.map(g => [
+                fiatGeolocations.map(g => [
                     (g.ticker ?? '').toLowerCase(),
                     { lat: g.lat, long: g.long }
                 ])
             );
 
-            const pairs = Object.entries(rates)
-                .filter(([tickerName]) => fiatKeys.includes(tickerName))
+            const pairs = Object.entries(props.currencyConversionRates[conversionRatesBase])
+                .filter(([tickerName]) => Object.keys(FiatList()).includes(tickerName))
                 .map(([tickerName, value]) => ({
                     tickerName,
                     value,
                 }));
 
             const geoPairs = pairs.map(p => {
-                const hit = geoIndex.get(p.tickerName.toLowerCase());
+                const ticker = geoIndex.get(p.tickerName.toLowerCase());
                 return {
                     tickerName: p.tickerName,
                     value: p.value,
-                    lat: hit?.lat ?? NaN,
-                    long: hit?.long ?? NaN,
+                    lat: ticker?.lat ?? NaN,
+                    long: ticker?.long ?? NaN,
                 };
             });
 
@@ -60,7 +55,7 @@ function Visualizer(props: { currencyConversionRates: CurrencyConversion | undef
                     long: p.long,
                     height: Math.max(0.05, Math.log10(p.value + 1) * 0.6),
                     label: p.tickerName,
-                    sphereRadius,
+                    sphereRadius: worldRadius,
                     position: latLongToSphere(p.lat, p.long)
                 }));
 
@@ -72,17 +67,20 @@ function Visualizer(props: { currencyConversionRates: CurrencyConversion | undef
 
     return (
         <div className="scene">
-            <Canvas camera={{ position: [8, 8, 8], fov: 60 }}>
-                <WorldScene bars={bars} sphereRadius={sphereRadius} />
 
+            <Canvas camera={{ position: [8, 8, 8], fov: 60 }}>
+
+                <WorldScene bars={bars} sphereRadius={worldRadius} />
                 <OrbitControls
                     enablePan={true}
                     enableZoom={true}
                     enableRotate={true}
-                    minDistance={sphereRadius + 2}
+                    minDistance={worldRadius + 2}
                     maxDistance={20}
                 />
+                
             </Canvas>
+
         </div>
     );
 }

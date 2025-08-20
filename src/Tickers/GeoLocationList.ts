@@ -1,5 +1,5 @@
 // Todo: https://restcountries.com/v3.1/currency/
-// use this api to get the geolocations
+// Uses the endpoint above to map latitudes and logitudes to currency information produced from the getcurrency information endpoint.
 
 import { UriProvider } from "../UriProvider/UriProvider";
 import FiatList from "./FiatTickers";

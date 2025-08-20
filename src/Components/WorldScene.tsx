@@ -6,8 +6,7 @@ import * as THREE from "three";
 import { AppState } from "../Infrustructure/AppState";
 import { Line } from '@react-three/drei';
 
-export default function WorldScene({ bars, sphereRadius }: { bars: BarData[], sphereRadius: number }) {
-
+export default function WorldScene({ bars, sphereRadius: worldRadius }: { bars: BarData[], sphereRadius: number }) {
     let midPointVec;
 
     const texture = useLoader(THREE.TextureLoader, earth) as THREE.Texture;
@@ -25,7 +24,7 @@ export default function WorldScene({ bars, sphereRadius }: { bars: BarData[], sp
             const endPositionBar = bars.find(b => b.label == AppState.getSelectedConversionTicker()?.tickerName)
             const endPoint = new THREE.Vector3(endPositionBar?.position.x, endPositionBar?.position.y, endPositionBar?.position.z);
 
-            const midPoint = latLongMidPoint(startPositionBar, endPositionBar)
+            const midPoint = CalculateGeoGraphicMidPoint(startPositionBar, endPositionBar)
             const midPointVector = new THREE.Vector3(midPoint?.x, midPoint?.y, midPoint?.z);
 
             midPointVec = midPointVector;
@@ -41,14 +40,14 @@ export default function WorldScene({ bars, sphereRadius }: { bars: BarData[], sp
         return [new THREE.Vector3(0, 0, 0)]
     }
 
-    function latLongMidPoint(start: BarData | undefined, end: BarData | undefined) {
+    function CalculateGeoGraphicMidPoint(start: BarData | undefined, end: BarData | undefined) {
         if (start && end) {
             const phi = (90 - ((start.lat + end.lat) / 2)) * (Math.PI / 180);
             const theta = (((start.long + end.long) / 2) + 180) * (Math.PI / 180);
 
-            const x = -((sphereRadius * 1.6) * Math.sin(phi) * Math.cos(theta));
-            const y = sphereRadius * 1.6 * Math.cos(phi);
-            const z = sphereRadius * 1.6 * Math.sin(phi) * Math.sin(theta);
+            const x = -((worldRadius * 1.6) * Math.sin(phi) * Math.cos(theta));
+            const y = worldRadius * 1.6 * Math.cos(phi);
+            const z = worldRadius * 1.6 * Math.sin(phi) * Math.sin(theta);
 
             return { x, y, z };
         }
@@ -58,11 +57,16 @@ export default function WorldScene({ bars, sphereRadius }: { bars: BarData[], sp
         <>
             <ambientLight intensity={5} />
 
-            <Sphere args={[sphereRadius, 32, 32]} position={[0, 0, 0]}>
+            <Sphere args={[worldRadius, 32, 32]} position={[0, 0, 0]}>
+
                 <meshStandardMaterial
                     map={texture} metalness={2} roughness={0.1}
                 />
-                {texture && <meshPhongMaterial attach="material" map={texture} />}
+
+                {texture &&
+                    <meshPhongMaterial attach="material" map={texture} />
+                }
+
             </Sphere>
 
             {bars.map((bar, i) => (

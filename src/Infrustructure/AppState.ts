@@ -1,17 +1,18 @@
-// AppState.ts
-
 class App {
+    // fields
     private static _instance: App;
-
-    static get instance() {
-        return (this._instance ??= new App());
-    }
-    private constructor() { }
 
     private _selectedTicker?: Ticker;
     private _selectedConversion?: Ticker;
     private _conversionValue: number = 0;
 
+    // constructors
+    static get instance() {
+        return (this._instance ??= new App());
+    }
+    private constructor() { }
+
+    // methods
     get selectedTicker() {
         return this._selectedTicker;
     }
@@ -24,7 +25,6 @@ class App {
     set selectedConversionTicker(v: Ticker | undefined) {
         this._selectedConversion = v;
     }
-
     get selectedConversionValue() {
         return this._conversionValue;
     }

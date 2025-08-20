@@ -3,7 +3,7 @@ declare global {
     type CurrencyConversion = {
         date: string;
         [baseCurrency: string]: CurrencyRates | string;
-    }
+    };
 
     type CurrencyRates = {
         [tickerName: string]: number;
@@ -21,4 +21,12 @@ declare global {
             z: number;
         }
     };
+
+    type Ticker = {
+        name: string,
+        tickerName: string,
+        lat: number,
+        long: number,
+    };
+
 }

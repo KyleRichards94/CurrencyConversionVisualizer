@@ -41,8 +41,11 @@ function App() {
     return 0
   }
   return (
+
     <div className="container justify-content-center align-items-center ">
+
       <NavBar />
+
       <div className="row">
 
         <div className="col-md-3">
@@ -88,6 +91,7 @@ function App() {
       <h5>{tryConvert().toFixed(2)} {AppState.getSelectedConversionTicker()?.tickerName}</h5>
       <hr></hr>
       <Visualizer currencyConversionRates={currencyConversionRates} />
+
     </div>
   )
 }
