@@ -6,7 +6,6 @@ import { UriProvider } from './UriProvider/UriProvider.ts'
 import { SelectedTicker } from "./Tickers/SelectedTicker";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Select } from '@react-three/drei'
 
 function App() {
   const [currencyConversionRates, setCurrencyConversionRates] = useState<CurrencyConversion | undefined>()
