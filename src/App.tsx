@@ -70,7 +70,7 @@ function App() {
 
         <div className="col-md-9">
           <div className="input-group mb-3">
-            <input onChange={e => setConversionAmount(Number(e.target.value))} type="number" class="form-control" aria-label="Amount" />
+            <input onChange={e => setConversionAmount(Number(e.target.value))} type="number" className="form-control" aria-label="Amount" />
             <div className="input-group-append">
               <span className="input-group-text">{SelectedTicker.getSelectedTicker()?.tickerName ?? "$"}</span>
             </div>
