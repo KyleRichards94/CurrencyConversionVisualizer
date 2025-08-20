@@ -30,7 +30,13 @@ function TickersSelectList(props: { onChange: (selection: Ticker) => void }) {
 
     if (tickers) {
         return (
-            <Select options={tickers.map((option: Ticker) => ({ label: `${option.name} (${option.tickerName})`, value: option.tickerName }))}
+            <Select styles={{
+                control: (baseStyles) => ({
+                    ...baseStyles,
+                    borderColor: "var(--bs-border-color)",
+                }),
+            }} options={tickers.map((option: Ticker) => ({ label: `${option.name} (${option.tickerName})`, value: option.tickerName }))
+            }
                 onChange={setSelection} />
         )
     }
