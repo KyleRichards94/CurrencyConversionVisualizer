@@ -51,14 +51,14 @@
 
 
 
-@media screen and (max-width: 768px)  {
+@media screen and (max-width: 900px)  {
   .scene{
     width: 100%;
     height: 70vh;
   } 
 }
 
-@media screen and (min-width: 768px)  {
+@media screen and (min-width: 900px)  {
   .scene{
     min-width: 800px;
     width:100%;

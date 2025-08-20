@@ -1,4 +1,4 @@
-import { Canvas, type Vector3 } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import FiatList from "../Tickers/FiatTickers";
