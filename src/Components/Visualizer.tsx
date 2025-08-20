@@ -59,7 +59,7 @@ function Visualizer(props: { currencyConversionRates: CurrencyConversion | undef
     }, [props.currencyConversionRates])
 
     return (
-        <div style={{ width: "100%", height: "800px" }}>
+        <div style={{ width: "800px", height: "800px" }}>
             <Canvas camera={{ position: [8, 8, 8], fov: 60 }}>
                 <WorldScene bars={bars} sphereRadius={sphereRadius} />
 

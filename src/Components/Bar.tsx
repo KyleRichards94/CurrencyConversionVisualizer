@@ -17,7 +17,12 @@ function latLongToSphere(lat: number, long: number, radius: number) {
 
 function getColour(ticker: string): string {
     const appticker = SelectedTicker.getSelectedTicker();
+    const appconversion = SelectedTicker.getSelectedConversionTicker();
     if (appticker) {
+        if (appconversion) {
+            return appconversion.tickerName === ticker ? "blue"
+                : appticker.tickerName === ticker ? "red" : "green"
+        }
         return appticker.tickerName === ticker ? "red" : "green"
     }
     return "green"
