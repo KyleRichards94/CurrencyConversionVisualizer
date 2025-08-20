@@ -42,12 +42,26 @@ export default function WorldScene({ bars, sphereRadius: worldRadius }: { bars: 
 
     function CalculateGeoGraphicMidPoint(start: BarData | undefined, end: BarData | undefined) {
         if (start && end) {
-            const phi = (90 - ((start.lat + end.lat) / 2)) * (Math.PI / 180);
-            const theta = (((start.long + end.long) / 2) + 180) * (Math.PI / 180);
+            const dist = Math.sqrt(Math.pow((start.lat - end.lat), 2) + Math.pow((start.long - end.long), 2))
 
-            const x = -((worldRadius * 1.6) * Math.sin(phi) * Math.cos(theta));
-            const y = worldRadius * 1.6 * Math.cos(phi);
-            const z = worldRadius * 1.6 * Math.sin(phi) * Math.sin(theta);
+            const midpoint_lat = (start.lat + end.lat) / 2;
+            const midpoint_lon = (start.long + end.long) / 2
+            const phi = (90 - (midpoint_lat)) * (Math.PI / 180);
+            const theta = ((midpoint_lon) + 180) * (Math.PI / 180);
+            let x = 0;
+            let y = 0;
+            let z = 0;
+
+            if ((dist) < 180) {
+                x = -((worldRadius * 1.6) * Math.sin(phi) * Math.cos(theta));
+                y = worldRadius * 1.6 * Math.cos(phi);
+                z = worldRadius * 1.6 * Math.sin(phi) * Math.sin(theta);
+            }
+            else {
+                x = -((worldRadius * 1.6) * Math.sin(phi) * Math.cos(theta));
+                y = -worldRadius * 1.6 * Math.cos(phi);
+                z = -worldRadius * 1.6 * Math.sin(phi) * Math.sin(theta);
+            }
 
             return { x, y, z };
         }
